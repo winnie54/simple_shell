@@ -1,4 +1,4 @@
-*Simple Shell*
+Simple Shell
 Introduction
 This repository is an ALX School Project. The school project consisted in writing a shell like sh (Bourne Shell) by Stephen Bourne , in C, using a limited number of standard library functions.
 
@@ -73,6 +73,7 @@ _strtok
 
 man_1_simple_shell
 ___________________
-*AUTHORS*
-MUSA IBRAHIM AND
+AUTHORS
+MUSA IBRAHIM https://github.com/musaaj
+
 WINNIE ELUU-VINCENT https://github.com/winnie54
