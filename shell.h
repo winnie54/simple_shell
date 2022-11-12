@@ -17,7 +17,7 @@ char *_strncpy(char *dest, char *src, int n);
 int _strlen(char *s);
 int _putchar(char c);
 int _atoi(char *s);
-int interactive(info_t *);
+/*int interactive(info_t *);*/
 int is_delim(char, char *);
 void _puts(char *str);
 int _strcmp(char *s1, char *s2);
