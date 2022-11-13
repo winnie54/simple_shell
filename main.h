@@ -7,18 +7,15 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <string.h>
+#include <stdarg.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <errno.h>
 #include <sys/stat.h>
+
+#define BUF_SIZE 1024
 extern char **path;
 extern char **environ;
-typedef struct enviroment_var
-{
-	char *name;
-	char *value;
-	struct enviroment_var *next;
-}env_var;
 
 typedef struct builtins
 {
@@ -38,4 +35,8 @@ string _getenv2(string);
 boolean str_starts_with(string, string);
 int get_stat(string);
 char **_path(void);
+char *_strcat(char *, char *);
+char *str_cat(char *, char *);
+char *str_build(size_t n, ...);
+int execute(char *, char **, char **);
 #endif
