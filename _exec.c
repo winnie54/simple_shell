@@ -3,7 +3,7 @@
 int execute(char *command, char **args, char **environs)
 {
 	int status;
-	pid_t pid:
+	pid_t pid;
 
 	pid = fork();
 	if (pid == 0)

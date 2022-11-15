@@ -17,7 +17,12 @@ char *_strncpy(char *dest, char *src, int n);
 int _strlen(char *s);
 int _putchar(char c);
 int _atoi(char *s);
-/*int interactive(info_t *);*/
+int interactive(info_t *info);
+int _exit(info_t *info);
+int _myalias(info_t *info);
+int unset_alias(info_t *info, char *str);
+int set_alias(info_t *info, char *str);
+int print_alias(list_t *node);
 int is_delim(char, char *);
 void _puts(char *str);
 int _strcmp(char *s1, char *s2);
@@ -40,7 +45,9 @@ int dis_env(char **cmd, int er);
 int change_dir(char **cmd, int er);
 int display_help(char **cmd, int er);
 int echo_bul(char **cmd, int er);
-void  exit_bul(char **cmd, char *input, char **argv, int c);
+void clear_info(info_t *info);
+void set_info(info_t *info, char **av);
+void free_info(info_t *info, int all);
 
 
 /**

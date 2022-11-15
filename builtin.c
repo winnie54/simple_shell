@@ -1,38 +1,32 @@
 #include "shell.h"
 
 /**
- * exit_bul - Exit Statue Shell
- * @cmd: Parsed Command
- * @input: User Input
- * @argv:Program Name
- * @c:Excute Count
- * Return: Void (Exit Statue)
+ * _myexit - exits the shell
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ *  Return: exits with a given exit status
+ *         (0) if info.argv[0] != "exit"
  */
-void  exit_bul(char **cmd, char *input, char **argv, int c)
+int _myexit(info_t *info)
 {
-	int statue, i = 0;
+	int exitcheck;
 
-	if (cmd[1] == NULL)
+	if (info->argv[1])  /* If there is an exit arguement */
 	{
-		free(input);
-		free(cmd);
-		exit(EXIT_SUCCESS);
-	}
-	while (cmd[1][i])
-	{
-		if (_isalpha(cmd[1][i++]) != 0)
+		exitcheck = _erratoi(info->argv[1]);
+		if (exitcheck == -1)
 		{
-			_prerror(argv, c, cmd);
-			break;
+			info->status = 2;
+			print_error(info, "Illegal number: ");
+			_eputs(info->argv[1]);
+			_eputchar('\n');
+			return (1);
 		}
-		else
-		{
-			statue = _atoi(cmd[1]);
-			free(input);
-			free(cmd);
-			exit(statue);
-		}
+		info->err_num = _erratoi(info->argv[1]);
+		return (-2);
 	}
+	info->err_num = -1;
+	return (-2);
 }
 
 /**
