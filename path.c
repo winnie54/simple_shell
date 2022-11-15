@@ -1,6 +1,6 @@
 #include  "main.h"
 
-char **_path(void)
+char **set_path(void)
 {
 	char *env_path = _getenv2("PATH");
 	char **path = str_split(env_path, ":");

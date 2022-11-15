@@ -2,14 +2,14 @@
 
 int execute(char *command, char **args, char **environs)
 {
-	int status;
+	int status, success;
 	pid_t pid;
 
 	pid = fork();
 	if (pid == 0)
 	{
-	execve(command, args, environs);
+	success = execve(command, args, environs);
 	}
 	wait(&status);
-	return (1);
+	return (success);
 }

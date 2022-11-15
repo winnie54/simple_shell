@@ -12,36 +12,32 @@ int main(int argc, char **argv, char **env)
 	static char *command;
 	pid_t pid;
 
-	do
+
+	while (1)
 	{
 		printf("$ ");
 		getline(&line, &n, stdin);
 		i++;
 		buf = str_split(line, " \n");
-		if(str_starts_with(buf[0], "./"))
-		{
-			command = buf[0];
-		}
-		else
-		{
-			command = str_build(3, "/bin", "/", buf[0]);
-		}
-		check = get_stat(command);
-		if (!check)
-		{
-			printf("hsh: %d: %s not found\n", i, buf[0]);
-			continue;
-		}
-		else
-		{
-			execute(command, buf, environ);
-		}
 		free(line);
-		free_str_array(buf);
-		buf = NULL;
 		line = NULL;
+		command = buf[0];
+		if (exec_builtin(command, buf) == -1)
+		{
+			if (str_starts_with(command, "./"))
+			{
+				execute(command, buf, environ);
+			}
+			else if((command = _get_command_path(command)))
+			{
+				execute(command, buf, environ);
+			}
+			else
+			{
+				puts("command not found");
+			}
+		}
 	}
-	while (1);
 	(void)argc;
 	(void)argv;
 	return (0);
