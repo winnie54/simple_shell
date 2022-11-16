@@ -1,5 +1,6 @@
 Simple Shell
-Introduction
+
+Introduction:
 This repository is an ALX School Project. The school project consisted in writing a shell like sh (Bourne Shell) by Stephen Bourne , in C, using a limited number of standard library functions.
 
 The goal in this project was to make us understand how a shell works. To single out some items: what is the environment, the difference between functions and system calls, how to create processes using execve...
@@ -15,6 +16,7 @@ git clone https://github.com/winnie54/simple_shell
 compile it with
 
 gcc 4.8.4 -Wall -Werror -Wextra -pedantic *.c -o hsh.
+OR run ./make
 You can then run it by invoking ./hsh in that same directory.
 
 List of allowed functions and system calls
@@ -47,32 +49,169 @@ wait3 (man 2 wait3)
 wait4 (man 2 wait4)
 write (man 2 write)
 _exit (man 2 _exit)
-___________________
-Custom Function (Recreation of Standard Function in C)
-_strncpy
-_strlen
-_putchar
-_atoi
-_puts
-_strcmp
-_isalpha
-array_rev
-intlen
-_itoa
-_strcat
-_strcpy
-_strchr
-_strncmp
-_strdup
-_memcpy
-_calloc
-_realloc
-_getenv
-_getline
-_strtok
 
-man_1_simple_shell
-___________________
+Testing
+_______
+The shell works like this in interactive mode:
+
+$ ./hsh ($) /bin/ls hsh main.c shell.c ($) ($) exit $
+
+But also in non-interactive mode:
+
+$ echo "/bin/ls" | ./hsh hsh main.c shell.c test_ls_2 $ $ cat test_ls_2 /bin/ls /bin/ls $ $ cat test_ls_2 | ./hsh hsh main.c shell.c test_ls_2 hsh main.c shell.c test_ls_2 $
+
+Custom Function (Recreation of Standard Function in C)
+_______
+_strlen:
+int _strlen(char *s)
+
+_putchar:
+int _putchar(char c)
+
+_interactive:
+int interactive(info_t *info)
+
+_atoi:
+int _atoi(char *s)
+
+_puts:
+void _puts(char *str)
+
+_str_starts_with:_
+boolean str_starts_with(string str, string tok)
+
+_strcmp:
+int _strcmp(char *s1, char *s2)
+
+_isalpha:
+int _isalpha(int c)
+
+_prerror:
+void _prerror(char **argv, int c, char **cmd)
+
+_strcat:
+char *_strcat(char *dest, char *src)
+
+_strcpy:
+char *_strcpy(char *dest, char *src)
+
+_strchr:
+boolean _strchr(char *str, char c)
+
+_strdup:
+char *_strdup(char *str)
+
+_memcpy:
+char *_memcpy(char *dest, char *src, unsigned int n)
+
+_calloc:
+void *_calloc(unsigned int size)
+
+_fill_an_array:_
+void *fill_an_array(void *a, int el, unsigned int len)
+
+_free_all:_
+void free_all(char **cmd, char *line)
+
+_realloc:
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
+
+_str_array_len:_
+size_t str_array_len(char **str_array)
+
+_strtok:
+char *_strtok(char *str, char *tok)
+
+_execute:
+int execute(char *command, char **args, char **environs)
+
+_myexit:
+int _myexit(info_t *info)
+
+_display_help:
+int display_help(char **cmd, __attribute__((unused))int er)
+
+_echo:
+int echo_bul(char **cmd, int st)
+
+_unset_alias:
+int unset_alias(info_t *info, char *str)
+
+_set_alias:
+int set_alias(info_t *info, char *str)
+
+_print_alias:
+int print_alias(list_t *node)
+
+_myalias:
+int _myalias(info_t *info)
+
+_dis_env:_
+int dis_env(__attribute__((unused)) char **cmd, __attribute__((unused)) int er)
+
+_getenv:
+char *_getenv(char *name)
+
+_myenv:_
+int _myenv(info_t *info)
+
+_mysetenv:_
+int _mysetenv(info_t *info)
+
+_myunsetenv:_
+int _myunsetenv(info_t *info)
+
+_getenv2:_
+string _getenv2(string name)
+
+_clear_info:_
+void clear_info(info_t *info)
+
+_set_info:_
+void set_info(info_t *info, char **av)
+
+_free_info:_
+void free_info(info_t *info, int all)
+
+_getline:
+char *_getline()
+
+_hastag_handle:_
+void hashtag_handle(char *buff)
+
+_history:_
+int history(char *input)
+
+_free_env:_
+void free_env(char **env)
+
+_free_str_array:_
+void free_str_array(char **str_array)
+
+_str_array_len:_
+size_t str_array_len(char **str_array)
+
+_str_build:_
+char *str_build(size_t n, ...)
+
+_str_cat:_
+char *str_cat(char *dest, char *src)
+
+_path:
+char **_path(void)
+
+_str_split:_
+char **str_split(char *src, char *tok)
+
+_get_stat:_
+int get_stat(string path)
+
+_change_dir:_
+int change_dir(char **cmd, __attribute__((unused))int er)
+
+_is_delim:_
+int is_delim(char c, char *delim)
+_______
 AUTHORS
 MUSA IBRAHIM https://github.com/musaaj
 
