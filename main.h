@@ -13,7 +13,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 
-#define BUF_SIZE 1024
+#define BUFSIZE 2048
 extern char **path;
 extern char **environ;
 typedef char* string;
@@ -31,12 +31,15 @@ char **set_path(void);
 /*str functions*/
 int _strlen(char *s);
 int _putchar(char c);
-void _puts(char *str);
+int _puts(char *str);
 int _strcmp(char *s1, char *s2);
 int _isalpha(int c);
 char *_strcat(char *, char *);
 char *str_cat(char *, char *);
 char *str_build(size_t n, ...);
+string str_rev(string);
+string itoa(int);
+/*system interface*/
 int execute(char *, char **, char **);
 string _get_command_path(string);
 /*builtins*/

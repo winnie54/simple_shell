@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * get_stat - check for execute permission for a path
+ * @path: path of the file to check
+ * Return: 1 if @path is executable else 0
+ */
 int get_stat(string path)
 {
 	struct stat file_stat;

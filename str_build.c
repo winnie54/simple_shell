@@ -24,7 +24,7 @@ char *str_cat(char *dest, char *src)
 	}
 	i++;
 	tmp[i] = '\0';
-	dest = tmp;
+	/*dest = tmp;*/
 	return (tmp);
 }
 
@@ -37,7 +37,8 @@ char *str_build(size_t n, ...)
 	while (n > 0)
 	{
 		buffer = va_arg(strings, char *);
-		tmp = str_cat(tmp, buffer);
+		if (buffer)
+			tmp = str_cat(tmp, buffer);
 		n--;
 	}
 	va_end(strings);

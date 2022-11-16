@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * _getenv2 - get value of an enviroment variable
+ * @name: enviroment variable name
+ * Return: value for @name if it exist else NULL
+ */
 string _getenv2(string name)
 {
 	size_t i = 0;

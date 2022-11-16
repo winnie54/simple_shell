@@ -9,6 +9,7 @@ string fun_id[] =
 {
 	"exit",
 	"help",
+	"cd",
 	NULL
 };
 

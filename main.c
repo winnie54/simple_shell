@@ -1,17 +1,20 @@
 #include "main.h"
 
-int i = 0;
-int check = 1;
 /**
+ * main - driver of our program
+ * @argc: int
+ * @argv: string array
+ * @env: string array
+ * Return: 0 on success else
  */
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv, __attribute__((unused))char **env)
 {
 	static char **buf;
 	static char *line;
 	size_t n = 2048;
+	static int i;
 	static char *command;
-	pid_t pid;
-
+	char *msg;
 
 	while (1)
 	{
@@ -28,15 +31,25 @@ int main(int argc, char **argv, char **env)
 			{
 				execute(command, buf, environ);
 			}
-			else if((command = _get_command_path(command)))
-			{
-				execute(command, buf, environ);
-			}
 			else
 			{
-				puts("command not found");
+				command = _get_command_path(command);
+				if (command)
+				{
+					execute(command, buf, environ);
+				}
+				else
+				{
+
+					msg = str_build(5, "hsh: ", itoa(i), ": ",  buf[0], ": not found\n");
+					_puts(msg);
+					free(msg);
+				}
+				free(command);
+
 			}
 		}
+		free_str_array(buf);
 	}
 	(void)argc;
 	(void)argv;
