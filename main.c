@@ -9,12 +9,9 @@
  */
 int main(int argc, char **argv, __attribute__((unused))char **env)
 {
-	static char **buf;
-	static char *line;
+	static char *command, *msg, *line, **buf;
 	size_t n = 2048;
 	static int i;
-	static char *command;
-	char *msg;
 
 	while (1)
 	{
@@ -28,16 +25,12 @@ int main(int argc, char **argv, __attribute__((unused))char **env)
 		if (exec_builtin(command, buf) == -1)
 		{
 			if (str_starts_with(command, "./"))
-			{
 				execute(command, buf, environ);
-			}
 			else
 			{
 				command = _get_command_path(command);
 				if (command)
-				{
 					execute(command, buf, environ);
-				}
 				else
 				{
 
