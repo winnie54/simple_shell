@@ -33,7 +33,6 @@ int main(int argc, char **argv, __attribute__((unused))char **env)
 					execute(command, buf, environ);
 				else
 				{
-
 					msg = str_build(5, "hsh: ", itoa(i), ": ",  buf[0], ": not found\n");
 					_puts(msg);
 					free(msg);
