@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * execute - execute executable
+ * @command: path to an executable
+ * @args: argument to @command
+ * @environs: enviroment variables
+ * Return: no return on success else -1
+ */
 int execute(char *command, char **args, char **environs)
 {
 	int status, success;

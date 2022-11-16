@@ -1,45 +1,66 @@
 #include "main.h"
-int (*fun[])(string, string *) =
-{
-	&_quit,
-	&help,
-	NULL
-};
-string fun_id[] =
-{
-	"exit",
-	"help",
-	"cd",
-	NULL
-};
 
-int _quit(__attribute__((unused)) string command, __attribute__((unused)) string *args)
+/**
+ * _quit - exit the programm
+ * @cmd: str
+ * @args: string array
+ * Return: no return on success else 0
+ */
+int _quit(__attribute__((unused)) string cmd, string *args)
 {
 	free_str_array(args);
 	exit(0);
 	return (0);
 }
-
-int help(__attribute__((unused)) string commad, __attribute__((unused)) string *args)
+/**
+ * help - exit the programm
+ * @cmd: str
+ * @args: string array
+ * Return:  0 alwyas
+ */
+int help(string cmd, __attribute__((unused)) string *args)
 {
-	puts("\t\t\t\thsh: Copyright 2022 Musa And Winnie");
-	puts("\t\t\t\tI work like Unix sh");
+	(void)cmd;
+	_puts("\t\t\t\thsh: Copyright 2022 Musa And Winnie");
+	_puts("\t\t\t\tI work like Unix sh");
 	return (0);
 }
 
-int exec_builtin(__attribute__((unused)) string cmd, __attribute__((unused)) string *args)
+/**
+ * exec_builtin - execute builtin functions
+ * @cmd: str
+ * @args: string array
+ * Return: 0 on success else -1
+ */
+int exec_builtin(string cmd, string *args)
 {
 	int cmd_id = get_cmd_id(cmd);
 
+	int (*fun[])(string, string *) = {
+		&_quit,
+		&help,
+		NULL
+	};
 	if (cmd_id != -1)
 		return ((*fun[cmd_id])(cmd, args));
 	return (-1);
 }
 
+/**
+ * get_cmd_id - check for a builtin command
+ * @cmd: str
+ * Return: command id on success else -1
+ */
 size_t get_cmd_id(string cmd)
 {
 	int i = 0;
-	
+	string fun_id[] = {
+		"exit",
+		"help",
+		"cd",
+		NULL
+	};
+
 	while (fun_id[i])
 	{
 		if (!_strcmp(cmd, fun_id[i]))

@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * str_cat - join two strings together
+ * @dest: string
+ * @src: string
+ * Return: pointer to the concatenated string
+ */
 char *str_cat(char *dest, char *src)
 {
 	char *tmp;
@@ -24,10 +30,14 @@ char *str_cat(char *dest, char *src)
 	}
 	i++;
 	tmp[i] = '\0';
-	/*dest = tmp;*/
 	return (tmp);
 }
 
+/**
+ * str_build - concate 2 or more strings together
+ * @n: number of strings to concate
+ * Return: string
+ */
 char *str_build(size_t n, ...)
 {
 	char *buffer, *tmp = "";

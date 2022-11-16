@@ -16,7 +16,7 @@
 #define BUFSIZE 2048
 extern char **path;
 extern char **environ;
-typedef char* string;
+typedef char *string;
 typedef unsigned int boolean;
 char *_strtok(char *, char *);
 char **str_split(char *src, char *tok);

@@ -1,5 +1,9 @@
 #include "main.h"
 
+/**
+ * free_str_array - free string array
+ * @str_array: null terminated array string
+ */
 void free_str_array(char **str_array)
 {
 	unsigned int i = 0;
