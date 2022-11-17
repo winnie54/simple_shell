@@ -17,6 +17,8 @@ char *_strtok(char *str, char *tok)
 	int j = 0;
 	static char s[1024];
 
+	if (!str)
+		return (NULL);
 	if (str[i] == '\0')
 	{
 		i = 0;

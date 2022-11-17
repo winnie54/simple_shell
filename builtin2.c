@@ -21,8 +21,8 @@ int _quit(__attribute__((unused)) string cmd, string *args)
 int help(string cmd, __attribute__((unused)) string *args)
 {
 	(void)cmd;
-	_puts("\t\t\t\thsh: Copyright 2022 Musa And Winnie");
-	_puts("\t\t\t\tI work like Unix sh");
+	_puts("\t\t\t\thsh: Copyright 2022 Musa And Winnie\n");
+	_puts("\t\t\t\tI work like Unix sh\n");
 	return (0);
 }
 
@@ -57,7 +57,6 @@ size_t get_cmd_id(string cmd)
 	string fun_id[] = {
 		"exit",
 		"help",
-		"cd",
 		NULL
 	};
 

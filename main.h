@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <limits.h>
+#include <stdint.h>
 #include <string.h>
 #include <stdarg.h>
 #include <sys/types.h>
@@ -13,7 +14,7 @@
 #include <errno.h>
 #include <sys/stat.h>
 
-#define BUFSIZE 2048
+#define BUFSIZE 65000
 extern char **path;
 extern char **environ;
 typedef char *string;

@@ -67,10 +67,9 @@ char *_strcat(char *dest, char *src)
 string str_rev(string str)
 {
 	size_t len, i, j;
-	string tmp;
+	static char tmp[BUFSIZE];
 
 	len = _strlen(str);
-	tmp = malloc(sizeof(char) * (len + 1));
 	if (!tmp)
 		return (NULL);
 	j = len;
@@ -80,7 +79,8 @@ string str_rev(string str)
 		j--;
 	}
 	tmp[len] = 0;
-	return (tmp);
+	str = tmp;
+	return (str);
 }
 /**
  * itoa - converts interger to string
@@ -91,13 +91,8 @@ string itoa(int num)
 {
 	int reminder, i;
 	char sign;
-	string str, ret;
+	char str[BUFSIZE];
 
-	if (num == 0)
-		return ("0");
-	str = malloc(sizeof(char) * 64);
-	if (!str)
-		return (NULL);
 	i = 0;
 	sign = 0;
 	if (num < 0)
@@ -115,10 +110,8 @@ string itoa(int num)
 	if (sign)
 	{
 		str[i] = sign;
+		i++;
 	}
-	i++;
 	str[i] = 0;
-	ret = str_rev(str);
-	free(str);
-	return (ret);
+	return (str_rev(str));
 }

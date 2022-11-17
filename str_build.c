@@ -28,7 +28,6 @@ char *str_cat(char *dest, char *src)
 		src++;
 		i++;
 	}
-	i++;
 	tmp[i] = '\0';
 	return (tmp);
 }
