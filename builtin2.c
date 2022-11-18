@@ -14,7 +14,7 @@ int _quit(__attribute__((unused)) string cmd, string *args)
 }
 
 /**
- * _env - prints enviroment variables
+ * print_env - prints enviroment variables
  * @cmd: str
  * @args: string array
  * Return:  0 alwyas
