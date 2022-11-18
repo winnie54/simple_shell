@@ -11,13 +11,11 @@ int main(int argc, char **argv, __attribute__((unused))char **env)
 {
 	static char *command, *msg, *line, **buf;
 	size_t n = 2048;
-	static int i;
 
 	while (1)
 	{
 		printf("$ ");
 		getline(&line, &n, stdin);
-		i++;
 		buf = str_split(line, " \n");
 		free(line);
 		line = NULL;
@@ -33,7 +31,7 @@ int main(int argc, char **argv, __attribute__((unused))char **env)
 					execute(command, buf, environ);
 				else
 				{
-					msg = str_build(5, "hsh: ", itoa(i), ": ",  buf[0], ": not found\n");
+					msg = str_build(2, argv[0],  ": No such file or directory\n");
 					_puts(msg);
 					free(msg);
 				}

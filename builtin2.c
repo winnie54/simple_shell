@@ -25,7 +25,7 @@ int print_env(string cmd, __attribute__((unused)) string *args)
 
 	while (environ[i] != NULL)
 	{
-		_puts( environ[i]);
+		_puts(environ[i]);
 		_puts("\n");
 		i++;
 	}
