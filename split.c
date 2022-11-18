@@ -15,7 +15,7 @@ char *_strtok(char *str, char *tok)
 {
 	static int i;
 	int j = 0;
-	static char s[1024];
+	static char s[BUFSIZE];
 
 	if (!str)
 		return (NULL);
