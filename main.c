@@ -10,7 +10,7 @@
 int main(int argc, char **argv, __attribute__((unused))char **env)
 {
 	static char *command, *msg, *line, **buf;
-	size_t n = 2048;
+	size_t n = 2048, success = 0;
 
 	while (1)
 	{
@@ -31,12 +31,15 @@ int main(int argc, char **argv, __attribute__((unused))char **env)
 					execute(command, buf, environ);
 				else
 				{
-					msg = str_build(2, argv[0],  ": No such file or directory\n");
-					_puts(msg);
-					free(msg);
+					success =execute(buf[0], buf, environ);
+					if (success)
+					{
+						msg = str_build(2, argv[0],  ": No such file or directory\n");
+						_puts(msg);
+						free(msg);
+					}
 				}
 				free(command);
-
 			}
 		}
 		free_str_array(buf);
