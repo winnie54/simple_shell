@@ -12,6 +12,27 @@ int _quit(__attribute__((unused)) string cmd, string *args)
 	exit(0);
 	return (0);
 }
+
+/**
+ * _env - prints enviroment variables
+ * @cmd: str
+ * @args: string array
+ * Return:  0 alwyas
+ */
+int print_env(string cmd, __attribute__((unused)) string *args)
+{
+	int i = 0;
+
+	while (environ[i] != NULL)
+	{
+		_puts( environ[i]);
+		_puts("\n");
+		i++;
+	}
+	(void)cmd;
+	return (0);
+}
+
 /**
  * help - exit the programm
  * @cmd: str
@@ -39,6 +60,7 @@ int exec_builtin(string cmd, string *args)
 	int (*fun[])(string, string *) = {
 		&_quit,
 		&help,
+		&print_env,
 		NULL
 	};
 	if (cmd_id != -1)
@@ -57,7 +79,7 @@ size_t get_cmd_id(string cmd)
 	string fun_id[] = {
 		"exit",
 		"help",
-		"cd",
+		"env",
 		NULL
 	};
 

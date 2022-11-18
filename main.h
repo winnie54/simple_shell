@@ -45,6 +45,7 @@ string _get_command_path(string);
 /*builtins*/
 int _quit(string, string *);
 int help(string, string *);
+int print_env(string, string *);
 int exec_builtin(string, string *);
 size_t get_cmd_id(string);
 #endif
