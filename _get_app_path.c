@@ -12,6 +12,8 @@ string _get_command_path(string command)
 
 	if (!command)
 		return (NULL);
+	if (get_stat(command))
+		return (str_build(1, command));
 	path = set_path();
 	while (*path)
 	{

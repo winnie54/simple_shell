@@ -9,7 +9,7 @@
 int _quit(__attribute__((unused)) string cmd, string *args)
 {
 	free_str_array(args);
-	exit(0);
+	_exit(0);
 	return (0);
 }
 

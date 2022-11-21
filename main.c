@@ -31,13 +31,9 @@ int main(int argc, char **argv, __attribute__((unused))char **env)
 					execute(command, buf, environ);
 				else
 				{
-					success =execute(buf[0], buf, environ);
-					if (success)
-					{
-						msg = str_build(2, argv[0],  ": No such file or directory\n");
-						_puts(msg);
-						free(msg);
-					}
+					msg = str_build(2, argv[0],  ": No such file or directory\n");
+					_puts(msg);
+					free(msg);
 				}
 				free(command);
 			}

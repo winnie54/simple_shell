@@ -9,7 +9,7 @@
  */
 int execute(char *command, char **args, char **environs)
 {
-	int status, success;
+	int status, success = 0;
 	pid_t pid;
 
 	pid = fork();
